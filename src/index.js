@@ -6,14 +6,17 @@ import { HashRouter } from 'react-router-dom';
 import { PersistGate } from 'redux-persist/integration/react';
 
 import { store, persistor } from './redux/store';
+import CartProvider from './providers/cart/cart.provider.jsx';
 
 render(
-  <Provider store={store}>
-    <HashRouter>
-      <PersistGate persistor={persistor}>
-        <App />
-      </PersistGate>
-    </HashRouter>
-  </Provider>,
+  <CartProvider>
+    <Provider store={store}>
+      <HashRouter>
+        <PersistGate persistor={persistor}>
+          <App />
+        </PersistGate>
+      </HashRouter>
+    </Provider>
+  </CartProvider>,
   document.getElementById('app')
 );
